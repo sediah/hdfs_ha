@@ -17,7 +17,7 @@ func TestGetActiveNameNode(t *testing.T) {
 	if nameservice == "" {
 		nameservice = "aa"
 	}
-	ha, err := New(zkServers, 5 * time.Second, nameservice)
+	ha, err := New(zkServers, 5 * time.Second, nameservice, true)
 	if err != nil {
 		t.Error(err)
 	}

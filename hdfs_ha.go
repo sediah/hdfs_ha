@@ -14,8 +14,9 @@ type HdfsHa struct {
 	ZkBreadCrumbPath string
 }
 
-func New(zkServers string, zkTimeout time.Duration, nameservice string) (*HdfsHa, error) {
-	zkConnection, _, err := zk.Connect(strings.Split(zkServers, ","), zkTimeout)
+func New(zkServers string, zkTimeout time.Duration, nameservice string, logInfo bool) (*HdfsHa, error) {
+	logOption := zk.WithLogInfo(logInfo)
+	zkConnection, _, err := zk.Connect(strings.Split(zkServers, ","), zkTimeout, logOption)
 	if err != nil {
 		return nil, err
 	}
